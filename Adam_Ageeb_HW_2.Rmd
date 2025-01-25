@@ -6,7 +6,7 @@ output: html_document
 ---
 # Adam Ageeb
 ## UT EID ara4629
-### GitHub Link: 
+### GitHub Link: https://github.com/adamageeb/hw2sds315 
 
 ### Problem 1
 
@@ -26,14 +26,14 @@ The histogram depicts the distribution of course evaluation scores, which range 
 profs_ggplot + geom_boxplot(aes(y = eval, fill = native)) + labs(title = "Distribution of Course Evaluation Scores by Professor Native Language", caption = "Data from profs.csv", x = "Native English Speaker", y = "Course Evaluation Score")
 ```
 
-The boxplots compare the distribution of course evaluation scores for professors who are native English speakers versus those who are not. Native English speakers tend to have higher median evaluation scores with less variability, while non-native speakers exhibit a slightly lower median and greater variability in their scores. This suggests that native English speakers may receive more consistent and favorable evaluations.
+The box plots compare the distribution of course evaluation scores for professors who are native English speakers versus those who are not. Native English speakers tend to have higher median evaluation scores with more variability, while non-native speakers exhibit a slightly lower median and lower variability in their scores. This suggests that native English speakers may receive less consistent but favorable evaluations.
 
 #### Part C
 ```{r, echo = FALSE, message=FALSE, warning=FALSE}
 profs_ggplot + geom_histogram(aes(x = eval)) + labs(title = "Distribution of Course Evaluation Scores by Gender", caption = "Data from profs.csv", x = "Course Evaluation Score", y = "Frequency") + facet_wrap(~gender, nrow = 2)
 ```
 
-The faceted histograms show the distribution of course evaluation scores for male (top) and female (bottom) instructors. Both genders exhibit a similar overall pattern, with scores concentrated between 3.5 and 5. However, male instructors show slightly more scores in the highest range (4.5–5), indicating that they may receive marginally better evaluations overall compared to female instructors.
+The faceted histograms show the distribution of course evaluation scores for male (bottom) and female (top) instructors. Both genders exhibit a similar overall pattern, with scores concentrated between 3.5 and 5. However, male instructors show slightly more scores in the highest range (4.5–5).
 
 #### Part D
 ```{r, echo = FALSE, message=FALSE, warning=FALSE}
@@ -51,7 +51,7 @@ bike <- read.csv("bikeshare.csv")
 bike |> 
   group_by(hr) |>
   summarize(avg_hourly = mean(total, na.rm = TRUE)) |>
-  ggplot(aes(x = hr, y = avg_hourly)) + geom_line() + labs(title = "Average Rentals Per Hour", caption = "Data from bikeshare.csv", x = "Hour of the Day (Starting at Midnight", y = "Number of Rentals")
+  ggplot(aes(x = hr, y = avg_hourly)) + geom_line() + labs(title = "Average Rentals Per Hour", caption = "Data from bikeshare.csv", x = "Hour of the Day (Starting at Midnight)", y = "Number of Rentals")
 ```
 
 The line graph illustrates the average number of bike rentals (y-axis) for each hour of the day (x-axis), aggregated across all days in the dataset. The units on the x-axis represent hours (0–23), with peak rentals observed during morning (7–9 AM) and evening rush hours (4–6 PM). This pattern aligns with commuter usage, suggesting that bike-sharing systems are heavily utilized during commuting periods.
@@ -64,7 +64,7 @@ bike |>
   ggplot(aes(x = hr, y = avg_hourly)) + geom_line() + labs(title = "Average Rentals Per Hour", caption = "Data from bikeshare.csv", x = "Hour of the Day (Starting at Midnight)", y = "Number of Rentals") + facet_wrap(~workingday, nrow = 2)
 ```
 
-The faceted line graphs display the average bike rentals (y-axis) across hours of the day (x-axis) for working days (top) and non-working days (bottom). On working days, rental activity peaks during morning (7–9 AM) and evening (4–6 PM) rush hours, reflecting commuter usage. On non-working days, rentals are distributed more evenly throughout the day, with a peak occurring around midday. This highlights how bike-sharing demand differs based on day type, emphasizing its dual role in commuting and recreational use.
+The faceted line graphs display the average bike rentals (y-axis) across hours of the day (x-axis) for working days (bottom) and non-working days (top). On working days, rental activity peaks during morning (7–9 AM) and evening (4–6 PM) rush hours, reflecting commuter usage. On non-working days, rentals are distributed more evenly throughout the day, with a peak occurring around midday. This highlights how bike-sharing demand differs based on day type.
 
 #### Part C
 ```{r, echo = FALSE, message=FALSE, warning=FALSE}
@@ -80,7 +80,7 @@ bike |>
   ggplot(aes(x = weathersit, y = avg_rider)) + geom_bar(stat = "identity") + labs(title = "Average Rentals at 9 AM by Weather", caption = "Data from bikeshare.csv", x = "Weather", y = "Number of Rentals") + facet_wrap(~workingday, nrow = 2)
 ```
 
-The faceted bar plots show the average number of bike rentals at 9 AM (y-axis) for different weather conditions (x-axis) on working days and non-working days. The facet labeled "1" at the top represents working days, while the facet labeled "0" at the bottom represents non-working days. Weather situations are categorized as 1 (Clear), 2 (Mist), 3 (Light Snow/Rain), and 4 (Heavy Rain). On both working and non-working days, ridership is highest during clear weather and decreases as weather conditions worsen. However, the decrease is more pronounced on non-working days, suggesting weather may have a greater impact on recreational riders compared to commuters.
+The faceted bar plots show the average number of bike rentals at 9 AM (y-axis) for different weather conditions (x-axis) on working days and non-working days. The facet labeled "1" at the top represents working days, while the facet labeled "0" at the bottom represents non-working days. Weather situations are categorized as Clear, Light Snow, or Mist. On both working and non-working days, ridership is highest during clear weather and decreases as weather conditions worsen. However, the decrease is more pronounced on non-working days, suggesting weather may have a greater impact on recreational riders compared to commuters.
 
 
 ### Problem 3
@@ -94,7 +94,7 @@ metro |>
   ggplot(aes(x = hour_of_day, y = avg_boarding, color = month, group = month)) + geom_line() + facet_wrap(~day_of_week) + labs(title = "Boardings Based On Time, Day, and Month", caption = "Data from capmetro_UT.csv", x = "Time", y = "Average Number of Boardings (Per Hour)")
 ```
 
-The faceted line graph shows average boardings (y-axis) by hour of the day (x-axis), with separate lines for September, October, and November, and facets by day of the week. Peak boardings consistently occur during morning (8 AM) and evening (5 PM) rush hours across all days. Lower boardings on Mondays in September likely reflect the start of the semester, while declines on Wednesdays to Fridays in November may result from the Thanksgiving holiday.
+The faceted line graph shows average boardings (y-axis) by hour of the day (x-axis), with separate lines for September, October, and November, and facets by day of the week. Peak boardings consistently occur during evening (5 PM) rush hour across all weekdays. Lower boardings on Mondays in September likely reflect the start of the semester, while declines on Wednesdays to Fridays in November may result from the Thanksgiving holiday.
 
 #### Part B
 ```{r, echo = FALSE, message=FALSE, warning=FALSE}
@@ -102,7 +102,7 @@ metro |>
   ggplot(aes(x = temperature, y = boarding, color = weekend)) + facet_wrap(~hour_of_day) + geom_point() + labs(title = "Relationship between Temperature and Boardings", caption = "Data from capmetro_UT.csv", x = "Temperature (Fahrenheit)", y = "Number of Boardings")
 ```
 
-The faceted scatter plot shows boardings (y-axis) versus temperature (x-axis), faceted by hour and colored by weekday or weekend. Higher temperatures correlate with increased ridership, particularly midday and on weekends, while colder temperatures (below 50°F) result in fewer boardings, especially early in the morning and late in the evening.
+The faceted scatter plot shows boardings (y-axis) versus temperature (x-axis), faceted by hour and colored by weekday or weekend. Ridership appears more consistent across temperatures during working hours, while non-working hours and weekends show greater variability, with higher temperatures leading to increased boardings.
 
 
 ### Problem 4
@@ -132,7 +132,8 @@ billboard |>
   ggplot(aes(x = year, y = count)) + geom_line() + labs(title = "Musical Diversity Over The Years", caption = "Data from billboard.csv", x = "Year", y = "Unique Songs on Billboard Top 100")
 ```
 
-The line graph shows the number of unique songs appearing in the Billboard Top 100 each year from 1959 to 2020. Musical diversity increased steadily from the 1960s to the early 2000s, peaking around the mid-2000s. However, there has been a slight decline in diversity since then, possibly reflecting the increasing dominance of fewer artists in the streaming era.
+The line graph shows the number of unique songs appearing in the Billboard Top 100 each year from 1959 to 2020. Musical diversity increased steadily in the early 1960s, then declined through the 1970s, 80s, and 90s. However, it has spiked significantly in the 21st century, reflecting a resurgence in musical variety on the charts.
+
 
 #### Part C
 ```{r, echo = FALSE, message=FALSE, warning=FALSE}
@@ -148,4 +149,4 @@ goats <- billboard |>
 ggplot(goats, aes(x = performer, y = countx)) + geom_bar(stat = "identity") + coord_flip() + labs(title = "Artists with the Most 10-Week Hits", caption = "Data from billboard.csv", x = "Number of 10-Week Hits", y = "Artist")
 ```
 
-The bar plot displays the 19 artists with at least 30 songs that appeared in the Billboard Top 100 for ten or more weeks. Each bar represents the total number of "ten-week hits" for an artist, with the most successful artist leading the chart. The plot emphasizes the remarkable consistency and chart presence of these performers across their careers.
+The bar plot displays the 19 artists with at least 30 songs that appeared in the Billboard Top 100 for ten or more weeks. Each bar represents the total number of "ten-week hits" for an artist. The plot emphasizes the remarkable consistency and chart presence of these performers across their careers.
